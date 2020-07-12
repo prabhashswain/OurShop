@@ -26,7 +26,7 @@ SECRET_KEY = '+%pb)spyib1j=vpu^cj33+$n87pakc3y7vjf#%od&$wx+vm60j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['familyshop.herokuapp.com']
 
 
 # Application definition
