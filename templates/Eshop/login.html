@@ -1,0 +1,33 @@
+{% extends 'Eshop/base.html' %}
+
+{% block body %}
+<div class="container">
+    <div class="p-2 m-2">
+        <div class="col-lg-5 mx-auto border rounded pt-4">
+            {% if messages %}
+              {% for message in messages %}
+                 <div class="alert alert-danger" role="alert">
+                     {{message}}
+                 </div>
+              {% endfor %}
+            {% endif%}
+            <h2 class="text-info">Login Here</h2>
+            <form action="{% url 'login' %}" method="post" >
+                {% csrf_token %}
+                 <!-----email------>
+                 <div class="form-group">
+                    <label for="">Email</label>
+                    <input type="email" name="email" value="{{email}}" class="form-control form-control-sm" required placeholder="Eshop@gmail.com">
+                </div>
+                 <!-----password------>
+                 <div class="form-group">
+                    <label for="">Password</label>
+                    <input type="password" name="password" class="form-control form-control-sm" placeholder="********">
+                </div>
+                <button type="submit" class="btn btn-sm btn-info col-lg-4">Login</button>
+            </form>
+            <p>Create an account ? <a href="{% url 'signup' %}">Signup</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

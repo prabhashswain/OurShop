@@ -1,0 +1,49 @@
+{% extends 'Eshop/base.html' %}
+{% block body %}
+{% load cart %}
+<div class="container">
+    <div class="border rounded p-4 m-4">
+      <h5 class="pl-2 ml-4 text-info">Your Orders</h5>
+      <hr>
+      {% if orders %}
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Sno.</th>
+                <th scope="col">Image</th>
+                <th scope="col">Product</th>
+                <th scope="col">Date</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+               {% for order in orders %}
+              <tr>
+                <th>{{forloop.counter}}</th>
+                <td><img src="{{order.product.image.url}}" alt="" class="rounded-circle" style="height:80px"></td>
+                <th>{{order.product}}</th>
+                <th>{{order.date}}</th>
+                <th>&#8377; {{order.price}}</th>
+                <th>{{order.quantity}}</th>
+                <th>&#8377; {{order.quantity|multiply:order.price}}</th>
+                {% if order.status %}
+                <th><small class="badge badge-success">completed</small></th>
+                {% else %}
+                <th><small class="badge badge-warning">pending</small></th>
+                {% endif %}
+              </tr>
+              {% endfor %}  
+            </tbody>
+            
+          </table>
+         {% else %}
+         <h4 class="text-center p-4 m-4 text-danger">you have not ordered anything !!!</h4>
+         {% endif %}
+    </div>
+    
+</div>
+
+{% endblock %}

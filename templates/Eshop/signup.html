@@ -1,0 +1,48 @@
+{% extends 'Eshop/base.html' %}
+
+{% block body %}
+<div class="container">
+    <div class="p-2 m-2">
+        <div class="col-lg-5 mx-auto border rounded pt-4">
+            {% if messages %}
+              {% for message in messages %}
+                 <div class="alert alert-danger" role="alert">
+                     {{message}}
+                 </div>
+              {% endfor %}
+            {% endif%}
+            <h6>Create an account</h6>
+            <form action="{% url 'signup' %}" method="post" >
+                {% csrf_token %}
+                <!-----first name------>
+                <div class="form-group">
+                    <label for="">First Name</label>
+                    <input type="text" name="first_name" value="{{first_name}}" class="form-control form-control-sm" placeholder="prabhash">
+                </div>
+                 <!-----last name------>
+                 <div class="form-group">
+                    <label for="">Last Name</label>
+                    <input type="text" name="last_name" value="{{last_name}}" class="form-control form-control-sm" placeholder="Swain">
+                </div>
+                 <!-----email------>
+                 <div class="form-group">
+                    <label for="">Email</label>
+                    <input type="email" name="email" value="{{email}}" class="form-control form-control-sm" required placeholder="Eshop@gmail.com">
+                </div>
+                 <!-----ph number------>
+                 <div class="form-group">
+                    <label for="">Contact</label>
+                    <input type="text" name="contact" value="{{contact}}" class="form-control form-control-sm" placeholder="1234567890">
+                </div>
+                 <!-----password------>
+                 <div class="form-group">
+                    <label for="">Password</label>
+                    <input type="password" name="password" class="form-control form-control-sm" placeholder="********">
+                </div>
+                <button type="submit" class="btn btn-sm btn-info">create account</button>
+            </form>
+            <p>Already have an account ? <a href="{% url 'login' %}">Login</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
